@@ -19,6 +19,10 @@ services:
     build:
       context: ./requirements/wordpress/
       dockerfile: Dockerfile
+      args:
+        DB_NAME: ${DB_NAME}
+        DB_USER: ${DB_USER}
+        DB_PASS: ${DB_PASS}
     container_name: wordpress
     # depends_on:
       # - mariadb
@@ -26,20 +30,21 @@ services:
       - inception
     volumes:
       - inception:/var/www
+      # - ./requirements/wordpress/conf/wp-config.php:/var/www/wp-config.php
     restart: always
 
   mariadb:
     build:
       context: ./requirements/mariadb/
       dockerfile: Dockerfile
+      args:
+        DB_NAME: ${DB_NAME}
+        DB_USER: ${DB_USER}
+        DB_PASS: ${DB_PASS}
+        DB_ROOT: ${DB_ROOT}
     container_name: mariadb
     env_file:
       - .env
-    args:
-      DB_NAME: ${DB_NAME}
-      DB_USER: ${DB_USER}
-      DB_PASS: ${DB_PASS}
-      DB_ROOT: ${DB_ROOT}
     networks:
       - inception
     # volumes:

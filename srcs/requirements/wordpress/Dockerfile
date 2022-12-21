@@ -30,7 +30,5 @@ RUN wget http://wordpress.org/latest.tar.gz && \
     tar -xzvf latest.tar.gz && \
     cp -rf wordpress/* . && \
     rm -rf wordpress latest.tar.gz
-# COPY ./requirements/wordpress/conf/wp-config-create.sh .
-# RUN sh wp-config-create.sh && rm wp-config-create.sh && \
 RUN chmod -R 755 wp-content/ wp-admin/ wp-includes/
 CMD ["/usr/sbin/php-fpm8", "-F"]
