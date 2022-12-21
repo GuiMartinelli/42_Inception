@@ -1,0 +1,39 @@
+services:
+  nginx:
+    build:
+      context: ./requirements/nginx/
+      dockerfile: Dockerfile
+    container_name: nginx
+    depends_on:
+      - wordpress
+    networks:
+      - inception
+    ports:
+      - 443:443
+    volumes:
+      - inception:/var/www
+      - ./requirements/nginx/conf/default.conf:/etc/nginx/http.d/default.conf
+    restart: always
+
+  wordpress:
+    build:
+      context: ./requirements/wordpress/
+      dockerfile: Dockerfile
+    container_name: wordpress
+    networks:
+      - inception
+    volumes:
+      - inception:/var/www
+    restart: always
+
+volumes:
+  inception:
+    driver: local
+    driver_opts:
+      type: none
+      device: ~/guferrei/data/wordpress
+      o: bind
+
+networks:
+  inception:
+    driver: bridge
