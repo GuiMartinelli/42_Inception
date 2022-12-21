@@ -20,10 +20,32 @@ services:
       context: ./requirements/wordpress/
       dockerfile: Dockerfile
     container_name: wordpress
+    # depends_on:
+      # - mariadb
     networks:
       - inception
     volumes:
       - inception:/var/www
+    restart: always
+
+  mariadb:
+    build:
+      context: ./requirements/mariadb/
+      dockerfile: Dockerfile
+    container_name: mariadb
+    env_file:
+      - .env
+    args:
+      DB_NAME: ${DB_NAME}
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_ROOT: ${DB_ROOT}
+    networks:
+      - inception
+    # volumes:
+    #   - db:
+    ports:
+      - 3306:3306
     restart: always
 
 volumes:
@@ -32,6 +54,12 @@ volumes:
     driver_opts:
       type: none
       device: ~/guferrei/data/wordpress
+      o: bind
+  db:
+    driver: local
+    driver_opts:
+      type: none
+      device: ~/guferrei/data/db
       o: bind
 
 networks:
