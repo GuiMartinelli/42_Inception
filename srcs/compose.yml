@@ -30,7 +30,7 @@ services:
       - inception
     volumes:
       - wp:/var/www
-      # - ./requirements/wordpress/conf/wp-config.php:/var/www/wp-config.php
+      - ./requirements/wordpress/conf/wp-config.php:/var/www/wp-config.php
     restart: always
 
   mariadb:
