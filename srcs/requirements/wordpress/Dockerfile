@@ -3,6 +3,7 @@ ARG PHP_VERSION=8 \
     DB_NAME \
     DB_USER \
     DB_PASSWORD
+
 RUN apk update && apk upgrade && apk add --no-cache \
     php${PHP_VERSION} \
     php${PHP_VERSION}-fpm \
@@ -25,10 +26,14 @@ RUN apk update && apk upgrade && apk add --no-cache \
     sed -i "s|;listen.group = nobody|listen.group = nobody|g" \
     /etc/php8/php-fpm.d/www.conf && \
     rm -f /var/cache/apk/*
+
 WORKDIR /var/www
+
 RUN wget http://wordpress.org/latest.tar.gz && \
     tar -xzvf latest.tar.gz && \
     cp -rf wordpress/* . && \
     rm -rf wordpress latest.tar.gz
+
 RUN chmod -R 755 wp-content/ wp-admin/ wp-includes/
+
 CMD ["/usr/sbin/php-fpm8", "-F"]
