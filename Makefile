@@ -6,7 +6,7 @@
 #    By: guferrei <guferrei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/21 11:56:38 by guferrei          #+#    #+#              #
-#    Updated: 2022/12/27 10:02:50 by guferrei         ###   ########.fr        #
+#    Updated: 2022/12/27 10:09:10 by guferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,9 @@ setup: volumes
 
 down:
 	docker-compose -f srcs/compose.yml down
+
+clean: down
+	sudo rm -rf ~/guferrei
 
 volumes:
 	mkdir -p ~/guferrei/data/wordpress
