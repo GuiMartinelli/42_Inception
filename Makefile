@@ -6,7 +6,7 @@
 #    By: guferrei <guferrei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/21 11:56:38 by guferrei          #+#    #+#              #
-#    Updated: 2022/12/21 12:13:02 by guferrei         ###   ########.fr        #
+#    Updated: 2022/12/27 10:02:50 by guferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,4 +22,5 @@ down:
 
 volumes:
 	mkdir -p ~/guferrei/data/wordpress
+	mkdir -p ~/guferrei/data/db
 
