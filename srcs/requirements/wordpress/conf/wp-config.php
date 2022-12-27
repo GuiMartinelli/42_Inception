@@ -1,11 +1,11 @@
 <?php
 // Getting env variables
-$DB_NAME = getenv('DB_NAME')
-$DB_USER = getenv('DB_USER')
-$DB_PASSWORD = getenv('DB_PASS')
+$DB_NAME = getenv('DB_NAME');
+$DB_USER = getenv('DB_USER');
+$DB_PASSWORD = getenv('DB_PASS');
 
 // Defining WP variables
-define('DB_NAME', $DB_NAME)
+define('DB_NAME', $DB_NAME);
 
 define('DB_USER', $DB_USER);
 
@@ -15,9 +15,9 @@ define('DB_HOST', 'mariadb');
 
 define( 'DB_CHARSET', 'utf8' );
 
-define( 'DB_COLLATE', '' )
+define( 'DB_COLLATE', '' );
 
-\$table_prefix = 'wp_'
+$table_prefix = 'wp_';
 
 // define( 'WP_DEBUG', false )
 // 
