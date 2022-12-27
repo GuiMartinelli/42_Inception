@@ -19,8 +19,6 @@ RUN mkdir /var/run/mysqld; \
 
 RUN mysql_install_db --user=mysql --datadir=/var/lib/mysql
 
-EXPOSE 3306
-
 COPY ./conf/db_init.sh .
 RUN sh db_init.sh && rm db_init.sh
 USER mysql
