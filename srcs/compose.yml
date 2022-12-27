@@ -11,7 +11,7 @@ services:
     ports:
       - 443:443
     volumes:
-      - inception:/var/www
+      - wp:/var/www
       - ./requirements/nginx/conf/default.conf:/etc/nginx/http.d/default.conf
     restart: always
 
@@ -24,12 +24,12 @@ services:
         DB_USER: ${DB_USER}
         DB_PASS: ${DB_PASS}
     container_name: wordpress
-    # depends_on:
-      # - mariadb
+    depends_on:
+      - mariadb
     networks:
       - inception
     volumes:
-      - inception:/var/www
+      - wp:/var/www
       # - ./requirements/wordpress/conf/wp-config.php:/var/www/wp-config.php
     restart: always
 
@@ -47,14 +47,14 @@ services:
       - .env
     networks:
       - inception
-    # volumes:
-    #   - db:
+    volumes:
+      - db:/var/lib/mysql
     ports:
       - 3306:3306
     restart: always
 
 volumes:
-  inception:
+  wp:
     driver: local
     driver_opts:
       type: none
