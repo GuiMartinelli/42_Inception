@@ -18,14 +18,7 @@ RUN apk update && apk upgrade && apk add --no-cache \
     php${PHP_VERSION}-xml \
     php${PHP_VERSION}-zip \
     php${PHP_VERSION}-redis \
-    wget && \
-    sed -i "s|listen = 127.0.0.1:9000|listen = 9000|g" \
-    /etc/php8/php-fpm.d/www.conf && \
-    sed -i "s|;listen.owner = nobody|listen.owner = nobody|g" \
-    /etc/php8/php-fpm.d/www.conf && \
-    sed -i "s|;listen.group = nobody|listen.group = nobody|g" \
-    /etc/php8/php-fpm.d/www.conf && \
-    rm -f /var/cache/apk/*
+    wget
 
 WORKDIR /var/www
 
@@ -35,5 +28,10 @@ RUN wget http://wordpress.org/latest.tar.gz && \
     rm -rf wordpress latest.tar.gz
 
 RUN chmod -R 755 wp-content/ wp-admin/ wp-includes/
+
+COPY ./conf/set_wp.sh /bin/
+
+RUN sh /bin/set_wp.sh && \
+    rm /bin/set_wp.sh
 
 CMD ["/usr/sbin/php-fpm8", "-F"]
