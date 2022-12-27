@@ -24,6 +24,8 @@ services:
         DB_USER: ${DB_USER}
         DB_PASS: ${DB_PASS}
     container_name: wordpress
+    env_file:
+      - .env
     depends_on:
       - mariadb
     networks:
