@@ -19,11 +19,14 @@ define( 'DB_COLLATE', '' );
 
 $table_prefix = 'wp_';
 
-// define( 'WP_DEBUG', false )
-// 
-// if ( ! defined( 'ABSPATH' ) ) {
-// define( 'ABSPATH', __DIR__ . '/' )
-// }
+define( 'WP_DEBUG', false );
+
+if ( ! defined( 'ABSPATH' ) ) {
+	define( 'ABSPATH', __DIR__ . '/' );
+}
+
+require_once ABSPATH . 'wp-settings.php';
+
 // define( 'WP_REDIS_HOST', 'redis' )
 // 
 // define( 'WP_REDIS_PORT', 6379 )
@@ -34,4 +37,3 @@ $table_prefix = 'wp_';
 // 
 // define( 'WP_REDIS_DATABASE', 0 )
 // 
-// require_once ABSPATH . 'wp-settings.php'
