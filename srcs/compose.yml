@@ -50,8 +50,6 @@ services:
       - inception
     volumes:
       - db:/var/lib/mysql
-    ports:
-      - 3306:3306
     restart: always
 
 volumes:
