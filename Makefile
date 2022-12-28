@@ -6,7 +6,7 @@
 #    By: guferrei <guferrei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/21 11:56:38 by guferrei          #+#    #+#              #
-#    Updated: 2022/12/27 16:32:59 by guferrei         ###   ########.fr        #
+#    Updated: 2022/12/27 17:58:54 by guferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,9 +29,10 @@ down:
 	docker-compose -f ${COMPOSE} down
 
 clean: down
+	sudo rm -rf ${VOL_DIR}
 
 fclean: down
-	sudo rm -rf ${VOL_DIR}
+	docker system prune -a
 
 volumes:
 	mkdir -p ${VOL_DIR}/data/wordpress
