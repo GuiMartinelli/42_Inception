@@ -52,6 +52,15 @@ services:
       - db:/var/lib/mysql
     restart: always
 
+  redis:
+    build:
+      context: ./requirements/bonus/redis/
+      dockerfile: Dockerfile
+    container_name: redis
+    networks:
+      - inception
+    restart: always
+
 volumes:
   wp:
     driver: local
