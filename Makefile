@@ -6,7 +6,7 @@
 #    By: guferrei <guferrei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/21 11:56:38 by guferrei          #+#    #+#              #
-#    Updated: 2022/12/27 17:58:54 by guferrei         ###   ########.fr        #
+#    Updated: 2022/12/29 12:21:52 by guferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ down:
 clean: down
 	sudo rm -rf ${VOL_DIR}
 
-fclean: down
+fclean: clean
 	docker system prune -a
 
 volumes:
