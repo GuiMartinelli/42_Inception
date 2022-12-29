@@ -27,11 +27,11 @@ RUN wget http://wordpress.org/latest.tar.gz && \
     cp -rf wordpress/* . && \
     rm -rf wordpress latest.tar.gz
 
-RUN chmod -R 755 wp-content/ wp-admin/ wp-includes/
-
 COPY ./conf/set_wp.sh /bin/
 
 RUN sh /bin/set_wp.sh && \
     rm /bin/set_wp.sh
+
+RUN chown -R nobody:nobody /var/www/
 
 CMD ["/usr/sbin/php-fpm8", "-F"]

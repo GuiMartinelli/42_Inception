@@ -14,4 +14,16 @@ sed -i "s|localhost|mariadb|g" \
 /var/www/wp-config-sample.php && \
 sed -i "s|database_name_here|$DB_NAME|g" \
 /var/www/wp-config-sample.php && \
+echo "define('FS_METHOD','direct');" >> \
+/var/www/wp-config-sample.php && \
+echo "define( 'WP_REDIS_HOST', 'redis' );" >> \
+/var/www/wp-config-sample.php && \
+echo "define( 'WP_REDIS_PORT', 6379 );" >> \
+/var/www/wp-config-sample.php && \
+echo "define( 'WP_REDIS_TIMEOUT', 1 );" >> \
+/var/www/wp-config-sample.php && \
+echo "define( 'WP_REDIS_READ_TIMEOUT', 1 );" >> \
+/var/www/wp-config-sample.php && \
+echo "define( 'WP_REDIS_DATABASE', 0 );" >> \
+/var/www/wp-config-sample.php && \
 cp /var/www/wp-config-sample.php /var/www/wp-config.php
