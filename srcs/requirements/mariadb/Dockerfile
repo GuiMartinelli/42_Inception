@@ -21,4 +21,3 @@ COPY ./conf/wordpress.sql /tmp/
 RUN chmod u+x ./db_init.sh
 
 ENTRYPOINT [ "sh", "db_init.sh" ]
-
