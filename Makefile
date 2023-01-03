@@ -6,7 +6,7 @@
 #    By: guferrei <guferrei@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/21 11:56:38 by guferrei          #+#    #+#              #
-#    Updated: 2022/12/29 12:21:52 by guferrei         ###   ########.fr        #
+#    Updated: 2023/01/03 11:43:28 by guferrei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,5 +37,6 @@ fclean: clean
 volumes:
 	mkdir -p ${VOL_DIR}/data/wordpress
 	mkdir -p ${VOL_DIR}/data/db
+	mkdir -p ${VOL_DIR}/data/adminer
 
 re: fclean all
