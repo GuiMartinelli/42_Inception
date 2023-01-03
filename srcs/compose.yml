@@ -12,6 +12,7 @@ services:
       - 443:443
     volumes:
       - wp:/var/www
+      - adminer:/var/www/adminer
       - ./requirements/nginx/conf/default.conf:/etc/nginx/http.d/default.conf
     restart: always
 
@@ -58,8 +59,23 @@ services:
       context: ./requirements/bonus/redis/
       dockerfile: Dockerfile
     container_name: redis
+    depends_on:
+      - wordpress
     networks:
       - inception
+    restart: always
+
+  adminer:
+    build:
+      context: ./requirements/bonus/adminer/
+      dockerfile: Dockerfile
+    container_name: adminer
+    depends_on:
+      - mariadb
+    networks:
+     - inception
+    volumes:
+     - adminer:/var/www/adminer
     restart: always
 
 volumes:
@@ -74,6 +90,12 @@ volumes:
     driver_opts:
       type: none
       device: ~/guferrei/data/db
+      o: bind
+  adminer:
+    driver: local
+    driver_opts:
+      type: none
+      device: ~/guferrei/data/adminer
       o: bind
 
 networks:
